@@ -53,8 +53,12 @@ public class Memoria {
 		//O ALOMEJOR EN VEZ DE SER SIZE * 2 SER
 		Integer[] resizeArray = new Integer[size * 2];
 		
-		for (int i = 0; i < size; i++) {
-			resizeArray[i] = Memory[i];
+		for (int i = 0; i < Memory.length; i++) {
+			if (i < size) {
+				resizeArray[i] = Memory[i];				
+			}else {
+				resizeArray[i] = null;
+			}
 		}
 	}
 	

@@ -5,7 +5,7 @@ package main;
 public class Memoria {
 	private final Integer MAX_MEMORY = 10;
 	private Integer[] Memory;
-	private Integer null_elem;
+	private boolean null_elem;
 	private int size;
 	/**
 	 * Memoria
@@ -13,15 +13,16 @@ public class Memoria {
 	public Memoria() {
 		this.Memory = new Integer[MAX_MEMORY];
 		size = MAX_MEMORY;
-		null_elem = null;
+		null_elem = true;
 	}
 	/**
 	 * toString
 	 * @param cadena
 	 * @return
 	 */
-	public String toString(String cadena) {
-		return cadena;
+	public String toString() {
+		return null;
+		//Memoria: [0]:0 [3]:4
 	}
 	/**
 	 * write
@@ -30,51 +31,44 @@ public class Memoria {
 	 * @return
 	 */
 	public boolean write(Integer posicion, Integer valor) {
-		//Si no esta vacio
-//		if (this.size < this.Memory.length) {
-//			for (int i = 0; i < Memory.length; i++) {
-//				if (this.Memory[i] == posicion) {
-//					this.Memory[i] = valor;
-//					
-//				}
-//			}
-//			
-//			return true;
-//		}else {
-//			return false;
-//		}
-		
-		while (posicion <= resize()) {
+		if (posicion >= 0) {
+			this.resize(posicion);
+			this.Memory[posicion] = valor;
 			
+			return true;
+		}else {
+			return false;
 		}
 	}
 	
 	//retorna el elemento el la posicion pos...
 	public Integer read (Integer posicion) {
-		Integer pos = null;
-		for (int i = 0; i <= posicion; i ++) {
-			if (i == posicion) {
-				pos = Memory[i];
-			}
+		if (Memory[posicion] != null) {
+			return Memory[posicion];	
+		}else {
+			return -1;
 		}
-		
-		return pos;
 	}
 	
-	private void resize() {
+	private void resize(Integer posicion) {
 		//O ALOMEJOR EN VEZ DE SER SIZE * 2 SER
-		Integer[] resizeArray = new Integer[size * 2];
+		null_elem = false;
 		
-		for (int i = 0; i < Memory.length; i++) {
-			if (i < size) {
-				resizeArray[i] = Memory[i];				
-			}else {
-				resizeArray[i] = null;
+		if (posicion > this.size) {
+			Integer[] resizeArray = new Integer[posicion * 2];
+			
+			for (int i = 0; i < posicion; i++) {
+				if (i < size) {
+					resizeArray[i] = Memory[i];				
+				}else {
+					resizeArray[i] = null;
+				}
 			}
+			
+			//ajustarlo al array atributo
+			this.Memory = resizeArray;
 		}
 		
-		//ajustarlo al array atributo
-		this.Memory = resizeArray;
 	}
 	
 }

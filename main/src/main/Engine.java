@@ -12,6 +12,40 @@ public class Engine {
 		
 	}
 	/**
+	 * start
+	 */
+	public void start() {
+		// TODO Auto-generated method stub
+		Scanner scn = new Scanner(System.in);
+		String user = "";
+		
+		do {
+			user = scn.nextLine().toLowerCase();
+		
+			switch (user) {
+				case "help": 
+					help();
+					break;
+				case "quit":
+					quit();
+					user = "quit";
+					break;
+				case "run":
+					run();
+					break;
+				case "newinst":
+					newinst();
+					break;
+				case "reset":
+					reset();
+					break;
+				case "replace":
+					replace();
+					break;
+			}
+		}while (user != "quit");
+	}
+	/**
 	 * help
 	 */
 	public void help() {
@@ -53,39 +87,5 @@ public class Engine {
 	 */
 	public void replace() {
 		System.out.println("\nThe execution begins REPLACE");
-	}
-	/**
-	 * start
-	 */
-	public void start() {
-		// TODO Auto-generated method stub
-		Scanner scn = new Scanner(System.in);
-		String user = "";
-		
-		do {
-			user = scn.nextLine().toLowerCase();
-		
-			switch (user) {
-				case "help": 
-					help();
-					break;
-				case "quit":
-					quit();
-					user = "quit";
-					break;
-				case "run":
-					run();
-					break;
-				case "newinst":
-					newinst();
-					break;
-				case "reset":
-					reset();
-					break;
-				case "replace":
-					replace();
-					break;
-			}
-		}while (user != "quit");
 	}
 }

@@ -13,8 +13,7 @@ public class Main {
 		OperaAndStack num1 = new OperaAndStack();
 		Memoria memo = new Memoria();
 		num1.push(4);
-		memo.write(0, 4);
-		//memo.resize();
+		memo.write(0, 22);
 		
 	}
 

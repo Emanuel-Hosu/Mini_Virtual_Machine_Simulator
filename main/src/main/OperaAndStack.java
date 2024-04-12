@@ -19,8 +19,9 @@ public class OperaAndStack {
 	 * @param cadena
 	 * @return cadena
 	 */
-	public String toString(String cadena) {
-		return cadena;
+	public String toString() {
+		//Pila: 0 4
+		return null;
 	}
 	/**
 	 * isEmpty
@@ -38,12 +39,15 @@ public class OperaAndStack {
 	 * push
 	 * @param num
 	 */
-	public void push(int num) {
+	public boolean push(int num) {
 		//COMPRUEBA SI EL STACK ESTA LLENO
 		if (this.num_elems < this.Stack.length) {
 			this.Stack[num_elems] = num;
 			//System.out.println(this.Stack[num_elems]);
 			num_elems ++;
+			return true;
+		}else {
+			return true;
 		}
 	}
 	/**
@@ -70,7 +74,8 @@ public class OperaAndStack {
 		if (isEmpty() == false) {
 			return Stack[num_elems];
 		}else {
-			return (Integer) null;
+			//SIGNIFICA QUE ESTA VACIO
+			return -1;
 		}
 	}
 }

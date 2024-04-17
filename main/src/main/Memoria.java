@@ -51,10 +51,9 @@ public class Memoria {
 	}
 	
 	private void resize(Integer posicion) {
-		//O ALOMEJOR EN VEZ DE SER SIZE * 2 SER
 		null_elem = false;
 		
-		if (posicion > this.size) {
+		if (posicion >= this.size) {
 			Integer[] resizeArray = new Integer[posicion * 2];
 			
 			for (int i = 0; i < posicion; i++) {
@@ -66,6 +65,7 @@ public class Memoria {
 			}
 			
 			//ajustarlo al array atributo
+			System.out.println(resizeArray.length);
 			this.Memory = resizeArray;
 		}
 		

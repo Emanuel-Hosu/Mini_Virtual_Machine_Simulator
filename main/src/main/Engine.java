@@ -3,7 +3,8 @@ package main;
 import java.util.Scanner;
 
 public class Engine {
-	boolean end;
+	private boolean end;
+	private String user;
 	//ByteCodeProbram program = new ByteCodeProgram();
 	/**
 	 * Engine constructora
@@ -17,12 +18,14 @@ public class Engine {
 	public void start() {
 		// TODO Auto-generated method stub
 		Scanner scn = new Scanner(System.in);
-		String user = "";
+		CommandParser parser = new CommandParser();
+		Command transmisor = new Command();
 		
 		do {
-			user = scn.nextLine().toLowerCase();
-		
-			switch (user) {
+			this.user = scn.nextLine().toUpperCase();
+			parser.parse(this.user);
+			//System.out.println(parser);
+			/*switch (user) {
 				case "help": 
 					help();
 					break;
@@ -42,8 +45,8 @@ public class Engine {
 				case "replace":
 					replace();
 					break;
-			}
-		}while (user != "quit");
+			}*/
+		}while (this.user != "QUIT");
 	}
 	/**
 	 * help

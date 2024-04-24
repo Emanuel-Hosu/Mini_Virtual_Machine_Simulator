@@ -4,13 +4,11 @@ public class CommandParser {
 	public static Command parse(String line) {
 		//EXAVTAMENTE LO MISMO QUE BYTECODEPARSER
 		String[] splitedCommand = line.split(" ");
-		//System.out.println(splitedCommand.length);
 		
 		//PROBAR AVER SI FUNCION AL SPLIT
 		/*for (int i = 0; i < splitedCommand.length; i++) {
 			System.out.print(splitedCommand[i] + " ");
 		}*/
-		//HELP, QUIT, NEWINST(1), RUN, RESET, REPLACE(1);
 		if(splitedCommand.length == 1) {
 			//IGNORA SI ESTA EN MAYUSCULA O NO
 			switch (splitedCommand[1]) {

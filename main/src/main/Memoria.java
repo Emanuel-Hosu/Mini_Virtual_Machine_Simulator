@@ -20,9 +20,13 @@ public class Memoria {
 	 * @param cadena
 	 * @return
 	 */
+	
+	//PENDIENTE ANTES DE EMPEZAR CON LA CPU
 	public String toString() {
-		return null;
 		//Memoria: [0]:0 [3]:4
+		
+		return null;
+		
 	}
 	/**
 	 * write

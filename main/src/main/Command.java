@@ -5,24 +5,23 @@ public class Command {
 	private int replace;
 	
 	//Constructora para inicializar los atributos
-	/*
-	public ENUM_COMAND comand(String comand) {
-		switch (comand.toUpperCase()) {
-		case "QUIT":
-			return ENUM_COMAND.quit;
-		case "HELP":
-			return ENUM_COMAND.help;
-		}
-		
-	};*/
 	public Command() {
 		// TODO Auto-generated constructor stub
 		
 	}
+	/**
+	 * 
+	 * @param _command
+	 */
 	public Command(ENUM_COMMAND _command) {
 		// TODO Auto-generated constructor stub
 		
 	}
+	/**
+	 * 
+	 * @param _command
+	 * @param _byteCode
+	 */
 	public Command(ENUM_COMMAND _command, ByteCode _byteCode) {
 		// TODO Auto-generated constructor stub
 		

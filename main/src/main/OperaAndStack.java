@@ -16,12 +16,16 @@ public class OperaAndStack {
 	}
 	/**
 	 * toString
-	 * @param cadena
 	 * @return cadena
 	 */
 	public String toString() {
 		//Pila: 0 4
-		return null;
+		String cadena = "";
+		
+		for (int i = 0; i < Stack.length; i++) {
+			cadena += " " + Stack[i];
+		}
+		return "Pila:" + cadena;
 	}
 	/**
 	 * isEmpty

@@ -42,9 +42,9 @@ public class ByteCodeParser {
 		return null;
 	}
 	
-	public String toString(String cadena) {
+	/*public String toString(String cadena) {
 		return cadena;
-	};
+	};*/
 }
 
 //PUSH(1), LOAD(1), STORE(1

@@ -39,12 +39,6 @@ newinst LOAD 2 (trae lo que hay en la posición 2 de la memoria y no lo elimina)
 newinst STORE 1 (escribe en la primera posición de la memoria el último valor de la pila y lo elimina)
 newinst OUT (muestra por pantalla la cima de la pila - “Lo que hay encima de la pila es un 10”)
 newinst HALT (para el programa, todo lo que sigue detrás de él no se ejecuta)
-
-Y eso es solo la punta del iceberg, amigo mío. Las posibilidades son tan infinitas como absurdas.
-
-Entonces, ¿a qué esperas? ¡Sumérgete y comienza a apilar esos comandos como un profesional!
-
-Nota: Ningún hámster real resultó herido en la creación de este README.
 ```
 Y eso es solo la punta del iceberg, amigo mío. Las posibilidades son tan infinitas como absurdas.
 

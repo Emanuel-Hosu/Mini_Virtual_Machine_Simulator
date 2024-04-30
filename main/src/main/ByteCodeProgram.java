@@ -66,11 +66,67 @@ public class ByteCodeProgram {
 	}
 	
 	//cuando identificamos que un programa llama a run hacemos una llamada a esto
-	//runProgram() recorre el array y va ejecutando todo el programa
+	//String runProgram(CPU cpu) recorre el array(num_elems) y va ejecutando todos los bytecodes de programs.
+		//Los recorre hasta num_elems
+		//Para que se puedan ejecutar estos programsas: forma un String gigante, this.program[i].toString;
+			//El estado de la maquina
+			/*Comienza la ejecución de RUN
+			El estado de la maquina tras ejecutar el bytecode this.program[i].toString es:
+			Estado de la CPU:
+			cpu.toString
+			El estado de la maquina tras ejecutar el bytecode this.program[i].toString es:
+			Estado de la CPU:
+			cpu.toString
+			El estado de la maquina tras ejecutar el bytecode ADD es:
+			Estado de la CPU:
+			Memoria: <vacia>
+			Pila: 5
+			El estado de la maquina tras ejecutar el bytecode STORE 4 es:
+			Estado de la CPU:
+			Memoria: [4]:5
+			Pila: <vacia>
+			
+			cuando acabe el while
+			Programa almacenado:
+			i:  this.program[i].toString*/
+		//for o while con 
+		//El estado de la maquina tras ejecutar el bytecode this.program[i].toString es:
+		//\n
+		//Estado de la CPU:
+		//Memoria: Memoria.toString;
+		//Pila: Command.toStrin;(hay que revisar)
+	public String runProgram(CPU cpu) {
+		String mensaje = "";
+		for (int i = 0; i < this.num_elems; i++) {
+			if(!cpu.isHalt() && cpu.execute(this.program[i])) {
+				//bla bla bla
+			}else if(!cpu.isHalt()) { // Si hay error en la ejecucion
+				//bla bla bla
+			}
+		}
+		
+		cpu.erase(); // Limpiamos la CPU
+		cpu.runCPU(); // Y lo volvemos a poner en marcha
+		return mensaje;
+	}
+	
+	//Crear un metodo void reset();
+	public void reset() {
+		this.program = new ByteCode[0];
+	}
 	
 	public String toString() {
 		//Imprime programa almacenado
 		//junto a todo lo que aparece en el array \n
-		return "Programa almacenado: \n " + this.program;
+		StringBuilder sb = new StringBuilder();
+		sb.append("Programa almacenado \n");
+		//while i num_elems
+		// this.program[i]
+		/*Programa almacenado:
+			0: PUSH 2
+			1: PUSH 3
+			2: ADD
+			3: STORE 4*/
+		return sb.toString();
 	};
 }

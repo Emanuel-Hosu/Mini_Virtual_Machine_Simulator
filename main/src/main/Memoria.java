@@ -24,8 +24,16 @@ public class Memoria {
 	//PENDIENTE ANTES DE EMPEZAR CON LA CPU
 	public String toString() {
 		//Memoria: [0]:0 [3]:4
-		
-		return null;
+		StringBuilder sb = new StringBuilder();
+	    sb.append("Memoria: ");
+	    
+	    for (int i = 0; i < size; i++) {
+	        if (Memory[i] != null) {
+	            sb.append("[").append(i).append("]:").append(Memory[i]).append(" ");
+	        }
+	    }
+	    
+		return sb.toString();
 		
 	}
 	/**
@@ -73,6 +81,14 @@ public class Memoria {
 			this.Memory = resizeArray;
 		}
 		
+	}
+	
+	public Integer[] getMemory(){
+		return Memory;
+	}
+	
+	public void setMemory(Integer[] erasedMemory){
+		this.Memory = erasedMemory;
 	}
 	
 }

@@ -22,7 +22,7 @@ public class OperaAndStack {
 		//Pila: 0 4
 		String cadena = "";
 		
-		for (int i = 0; i < Stack.length; i++) {
+		for (int i = 0; i < num_elems; i++) {
 			cadena += " " + Stack[i];
 		}
 		return "Pila:" + cadena;
@@ -67,7 +67,7 @@ public class OperaAndStack {
 			Stack[num_elems] --;
 			return pop_num;
 		}else {
-			return (Integer) null;
+			return -1;
 		}
 	}
 	/**
@@ -81,5 +81,17 @@ public class OperaAndStack {
 			//SIGNIFICA QUE ESTA VACIO
 			return -1;
 		}
+	}
+	
+	public int getNumElems() {
+		return this.num_elems;
+	}
+	
+	public int[] getStack() {
+		return this.Stack;
+	}
+	
+	public void setStack(int[] erasedStack) {
+		this.Stack = erasedStack;
 	}
 }

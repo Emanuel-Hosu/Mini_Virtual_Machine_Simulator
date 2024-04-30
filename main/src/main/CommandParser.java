@@ -33,8 +33,4 @@ public class CommandParser {
 		}
 		return null;
 	}
-	
-	public String toString(String cadena) {
-		return null;
-	}
 }

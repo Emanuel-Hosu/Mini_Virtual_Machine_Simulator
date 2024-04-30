@@ -17,4 +17,12 @@ public class ByteCode {
 	public String toString(String cadena) {
 		return cadena;
 	};
+	
+	public ENUM_BYTECODE getCode(){
+		return code;
+	}
+	
+	public int getParam() {
+		return param;
+	}
 }

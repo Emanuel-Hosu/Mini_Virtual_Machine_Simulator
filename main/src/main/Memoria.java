@@ -21,7 +21,6 @@ public class Memoria {
 	 * @return
 	 */
 	
-	//PENDIENTE ANTES DE EMPEZAR CON LA CPU
 	public String toString() {
 		//Memoria: [0]:0 [3]:4
 		StringBuilder sb = new StringBuilder();

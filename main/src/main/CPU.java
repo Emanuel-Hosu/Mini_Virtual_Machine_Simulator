@@ -28,17 +28,28 @@ public class CPU {
 			}else {
 				return false;
 			}
-		}
-		/*if (instruction == ENUM_BYTECODE.ADD ){
-			//llamar sima pila
-			  if(sumaPila()){
-			  return true;
-			  }
+		}else if(instrucion == new ByteCode(ENUM_BYTECODE.SUB)) {
+			if(restaPila() == true) {				
+				return true;
+			}else {
+				return false;
+			}
+		}else if(instrucion == new ByteCode(ENUM_BYTECODE.MUL)) {
+			if(multiplicaPila() == true) {				
+				return true;
+			}else {
+				return false;
+			}
+		}else if(instrucion == new ByteCode(ENUM_BYTECODE.DIV)) {
+			if(dividePila() == true) {				
+				return true;
+			}else {
+				return false;
+			}
 		}else {
 			return false;
-		]*/
+		}
 		//CPU ejecuta instuciones recibe una instruccion y l aejecuta
-		return halt;
 	}
 	
 	//va a llamar al metodo toString del OperaAndStack y el de metodo memory

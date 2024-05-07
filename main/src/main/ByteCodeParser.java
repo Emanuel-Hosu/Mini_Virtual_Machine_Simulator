@@ -1,19 +1,28 @@
 package main;
 
 public class ByteCodeParser {
-//sin atriutos
-	
-	//Maybe Constructora
 	
 	//Puede recibbir lo que sea
 	public static ByteCode parse(String byteString) {
 		//REVISAR MAYUSCULAS
 		String[] splitedByte = byteString.split(" ");
-		
 		if (splitedByte.length == 0) {
 			return null;
 		}else if(splitedByte.length == 1) {
-			switch (splitedByte[1]) {
+			if("ADD".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.ADD);
+			}else if("SUB".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.SUB);
+			}else if("MUL".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.MUL);
+			}else if("DIV".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.DIV);
+			}else if("OUT".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.OUT);
+			}else if("HALT".equals(splitedByte[1])) {
+				return new ByteCode(ENUM_BYTECODE.HALT);
+			}
+			/*switch (splitedByte[1]) {
 				case "ADD":
 					return new ByteCode(ENUM_BYTECODE.ADD);
 				case "SUB":
@@ -26,25 +35,27 @@ public class ByteCodeParser {
 					return new ByteCode(ENUM_BYTECODE.OUT);
 				case "HALT":
 					return new ByteCode(ENUM_BYTECODE.HALT);
-			}
+			}*/
 		}else if(splitedByte.length == 2) {
-			switch (splitedByte[1]) {
-				case "PUSH":
-					return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(splitedByte[2]));
-				case "LOAD":
-					return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(splitedByte[2]));
-				case "STORE":
-					return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(splitedByte[2]));
+			if("PUSH".equals(splitedByte[0])) {
+				return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(splitedByte[1]));
+			}else if("LOAD".equals(splitedByte[0])) {
+				return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(splitedByte[1]));
+			}else if("STORE".equals(splitedByte[0])) {
+				return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(splitedByte[1]));
 			}
-		}else {
-			return null;
+//			switch (splitedByte[1]) {
+//				case "PUSH":
+//					return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(splitedByte[2]));
+//				case "LOAD":
+//					return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(splitedByte[2]));
+//				case "STORE":
+//					return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(splitedByte[2]));
+//			}
 		}
+		
 		return null;
 	}
-	
-	/*public String toString(String cadena) {
-		return cadena;
-	};*/
 }
 
 //PUSH(1), LOAD(1), STORE(1

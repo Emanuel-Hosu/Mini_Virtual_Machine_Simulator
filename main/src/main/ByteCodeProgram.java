@@ -9,6 +9,7 @@ public class ByteCodeProgram {
 	public ByteCodeProgram() {
 		this.size = 1;
 		this.num_elems = 0;
+		this.program = new ByteCode[size];
 	}
 	
 	//add_ByteCode
@@ -21,6 +22,7 @@ public class ByteCodeProgram {
 	//boolean setInstructionPosition (ByteCode, position), inserta el bytecode en la posicion position mientras sema mayor o igual a 0 y sea menor a size (siempre sera una posicion ocupada, va a machacar una posicion con replace)
 	public boolean setInstructionPosition(ByteCode instruction, int position) {
 		//alomejor hay que llamar a bytecode resize
+		ByteCodeResize();
 		if (position >= 0 && position < size) {
 			this.program[position] = instruction;
 			
@@ -32,11 +34,11 @@ public class ByteCodeProgram {
 	}
 	//void setInstruction(Bytecode) inserta en bytecode siguiente en la siguiente posicion disponible 
 	public void setInstruction (ByteCode instruction) {
+		ByteCodeResize();
 		this.program[this.size - 1] = instruction;
 
 		num_elems++;
 	}
-	
 	//replace_ByteCode(Recibe algo) inventada
 	
 	//showN_ByteCode devuelve la instruccion iesima
@@ -59,7 +61,7 @@ public class ByteCodeProgram {
 					resizeArray[i] = null;
 				}
 				
-				System.out.println("Clase ByteCodeProfram " + resizeArray.length);
+				System.out.println("Clase ByteCodeProgram Resize " + resizeArray.length);
 				this.program = resizeArray;
 			}
 		}
@@ -100,8 +102,10 @@ public class ByteCodeProgram {
 		for (int i = 0; i < this.num_elems; i++) {
 			if(!cpu.isHalt() && cpu.execute(this.program[i])) {
 				//bla bla bla
+				mensaje += "the state of the machine after executing " + this.program[i].toString() + " is:\nCPU state:\n" + cpu.toString();
 			}else if(!cpu.isHalt()) { // Si hay error en la ejecucion
 				//bla bla bla
+				mensaje += "Error: Incorrect execution of the command";
 			}
 		}
 		
@@ -115,11 +119,10 @@ public class ByteCodeProgram {
 		this.program = new ByteCode[0];
 	}
 	
+	//HAY QUE HACER COSAS EN RESIZE Y LUEGO ARREGALR ESTO.
 	public String toString() {
 		//Imprime programa almacenado
 		//junto a todo lo que aparece en el array \n
-		StringBuilder sb = new StringBuilder();
-		sb.append("Programa almacenado \n");
 		//while i num_elems
 		// this.program[i]
 		/*Programa almacenado:
@@ -127,6 +130,14 @@ public class ByteCodeProgram {
 			1: PUSH 3
 			2: ADD
 			3: STORE 4*/
-		return sb.toString();
+		String sb = "";
+		System.out.print("Stored program: \n");
+		int i = 0;
+		while (i < this.num_elems) {
+			sb += (i +": " + this.program[num_elems - 1].getCode() + " " + this.program[num_elems - 1].getParam() + "\n");
+			
+			i++;
+		}
+		return sb;
 	};
 }

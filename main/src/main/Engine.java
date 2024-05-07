@@ -31,7 +31,7 @@ public class Engine {
 			//Recoge lo que se escribe por pantalla, una vez cogido hay que llamar al comand parser
 			user = scn.nextLine().toUpperCase();
 			trn = CommandParser.parse(user);
-			System.out.print("The execution begins: " + trn);
+			System.out.print("The execution begins: " + user + "\n");
 			
 			if(trn != null) {
 				if(!trn.execute(this)) {
@@ -41,6 +41,8 @@ public class Engine {
 			}else {
 				System.out.println("Error: Incorrect Command");
 			}
+			
+			System.out.println(this.program.toString());
 		};
 	}
 	/**
@@ -65,7 +67,7 @@ public class Engine {
 	 * run
 	 */
 	public void run() {
-		
+		this.program.runProgram(cpu);
 	}
 	/**
 	 * newinst

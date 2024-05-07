@@ -14,9 +14,6 @@ public class ByteCode {
 		this.param = _param;
 	}
 	//tiene sus propios metodos getters
-	public String toString(String cadena) {
-		return cadena;
-	};
 	
 	public ENUM_BYTECODE getCode(){
 		return code;

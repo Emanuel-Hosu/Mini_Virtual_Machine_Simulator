@@ -9,17 +9,17 @@ public class ByteCodeParser {
 		if (splitedByte.length == 0) {
 			return null;
 		}else if(splitedByte.length == 1) {
-			if("ADD".equals(splitedByte[1])) {
+			if("ADD".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.ADD);
-			}else if("SUB".equals(splitedByte[1])) {
+			}else if("SUB".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.SUB);
-			}else if("MUL".equals(splitedByte[1])) {
+			}else if("MUL".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.MUL);
-			}else if("DIV".equals(splitedByte[1])) {
+			}else if("DIV".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.DIV);
-			}else if("OUT".equals(splitedByte[1])) {
+			}else if("OUT".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.OUT);
-			}else if("HALT".equals(splitedByte[1])) {
+			}else if("HALT".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.HALT);
 			}
 			/*switch (splitedByte[1]) {

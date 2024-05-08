@@ -35,7 +35,7 @@ public class ByteCodeProgram {
 	//void setInstruction(Bytecode) inserta en bytecode siguiente en la siguiente posicion disponible 
 	public void setInstruction (ByteCode instruction) {
 		ByteCodeResize();
-		this.program[this.size - 1] = instruction;
+		this.program[(this.num_elems + 1) - 1] = instruction;
 
 		num_elems++;
 	}
@@ -61,9 +61,10 @@ public class ByteCodeProgram {
 					resizeArray[i] = null;
 				}
 				
-				System.out.println("Clase ByteCodeProgram Resize " + resizeArray.length);
-				this.program = resizeArray;
+//				System.out.println("Clase ByteCodeProgram Resize " + resizeArray.length);
 			}
+			this.program = resizeArray;
+			size = resizeArray.length;
 		}
 	}
 	
@@ -134,7 +135,7 @@ public class ByteCodeProgram {
 		System.out.print("Stored program: \n");
 		int i = 0;
 		while (i < this.num_elems) {
-			sb += (i +": " + this.program[num_elems - 1].getCode() + " " + this.program[num_elems - 1].getParam() + "\n");
+			sb += (i +": " + this.program[(i + 1) - 1].getCode() + " " + this.program[(i + 1)  - 1].getParam() + "\n");
 			
 			i++;
 		}

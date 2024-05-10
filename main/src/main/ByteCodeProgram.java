@@ -98,6 +98,7 @@ public class ByteCodeProgram {
 		//Estado de la CPU:
 		//Memoria: Memoria.toString;
 		//Pila: Command.toStrin;(hay que revisar)
+	//COMPROBAR ESTO
 	public String runProgram(CPU cpu) {
 		String mensaje = "";
 		for (int i = 0; i < this.num_elems; i++) {
@@ -135,8 +136,11 @@ public class ByteCodeProgram {
 		System.out.print("Stored program: \n");
 		int i = 0;
 		while (i < this.num_elems) {
-			sb += (i +": " + this.program[(i + 1) - 1].getCode() + " " + this.program[(i + 1)  - 1].getParam() + "\n");
-			
+			if (this.program[(i + 1)  - 1].getParam() == -1) {
+				sb += (i +": " + this.program[(i + 1) - 1].getCode() + "\n");
+			}else {
+				sb += (i +": " + this.program[(i + 1) - 1].getCode() + " " + this.program[(i + 1)  - 1].getParam() + "\n");
+			}
 			i++;
 		}
 		return sb;

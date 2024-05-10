@@ -9,6 +9,7 @@ public class CPU {
 		this.halt = true;
 	}
 	
+	//hay que llamarlo al darle a run en engine
 	public void runCPU() {
 		this.halt = false;
 	}
@@ -17,30 +18,31 @@ public class CPU {
         this.pila = pila;
     }
 
-    public void setStoredMemory(Memoria stored_memory) {
-        this.stored_memory = stored_memory;
+    public void setStoredMemory(Memoria _stored_memory) {
+        this.stored_memory = _stored_memory;
     }
 	
+    //cambiar la movida de new ByteCode(ENMU no se que)
 	public boolean execute(ByteCode instrucion) {
-		if (instrucion == new ByteCode(ENUM_BYTECODE.ADD)) {
+		if (instrucion.equals(ENUM_BYTECODE.ADD)) {
 			if(sumaPila() == true) {				
 				return true;
 			}else {
 				return false;
 			}
-		}else if(instrucion == new ByteCode(ENUM_BYTECODE.SUB)) {
+		}else if(instrucion.equals(ENUM_BYTECODE.SUB)) {
 			if(restaPila() == true) {				
 				return true;
 			}else {
 				return false;
 			}
-		}else if(instrucion == new ByteCode(ENUM_BYTECODE.MUL)) {
+		}else if(instrucion.equals(ENUM_BYTECODE.MUL)) {
 			if(multiplicaPila() == true) {				
 				return true;
 			}else {
 				return false;
 			}
-		}else if(instrucion == new ByteCode(ENUM_BYTECODE.DIV)) {
+		}else if(instrucion.equals(ENUM_BYTECODE.DIV)) {
 			if(dividePila() == true) {				
 				return true;
 			}else {
@@ -65,27 +67,26 @@ public class CPU {
 	//metodo erase, se encarga de borrar la pila y la memoria(tienen que desaparecer los atributos, los tiene que dejar como nuevos)
 	//los tiene que dejar vacios como un RESET o algo asi
 	public void erase() {
-		Integer[] memoryDeleter = new Integer[stored_memory.getMemory().length];
-		int[] operaDeleter = new int[pila.getStack().length];
-		
-		stored_memory.setMemory(memoryDeleter);
-		pila.setStack(operaDeleter);
+		pila = new OperaAndStack();
+		stored_memory = new Memoria();
 	}
 	
 	//isHalt?() devuelve un booleano de si la maquina esta parada devuelve un true o false
 	public boolean isHalt() {
-		return true;
+		return halt;
 	}
 	
 	//boolean sumaPlia() utilizar metodos pop y push, pop pop + push
 	//si solo hay un numero hay que hacer un pop y si la pila esta vacia hay que volver a meter el numero
 	//si es un -1 no hay nada que coger
+	//ME FALTA RETORNAR EL RESULTADO
 	public boolean sumaPila() {
 		if (pila.isEmpty() == false && pila.getNumElems() > 1) {
 			int num1 = pila.pop();
 			int num2 = pila.pop();
 			
 			int resultado = num1 + num2;
+			pila.push(resultado);
 			return true;
 		}else {
 			return false;
@@ -99,6 +100,7 @@ public class CPU {
 			int num2 = pila.pop();
 			
 			int resultado = num1 - num2;
+			pila.push(resultado);
 			return true;
 		}else {
 			return false;
@@ -112,6 +114,7 @@ public class CPU {
 			int num2 = pila.pop();
 			
 			int resultado = num1 * num2;
+			pila.push(resultado);
 			return true;
 		}else {
 			return false;
@@ -125,9 +128,12 @@ public class CPU {
 			int num2 = pila.pop();
 			
 			int resultado = num1 / num2;
+			pila.push(resultado);
 			return true;
 		}else {
 			return false;
 		}
 	};
 }
+
+//CUANDO SE HACE UN OUT LA CPU HACE UN SISTEM PRINY, ORDENA Y SACA LA CIMA DE LA PILA ES:  CON PILA.GETCIMA

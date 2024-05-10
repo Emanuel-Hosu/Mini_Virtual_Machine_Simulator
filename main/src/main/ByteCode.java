@@ -7,6 +7,7 @@ public class ByteCode {
 	//Constructora para inicializar los atributos
 	public ByteCode(ENUM_BYTECODE _code) {
 		this.code = _code;
+		this.param = -1;
 	}
 
 	public ByteCode(ENUM_BYTECODE _code, int _param) {

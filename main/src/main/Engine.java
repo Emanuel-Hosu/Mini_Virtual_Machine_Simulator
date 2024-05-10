@@ -41,8 +41,6 @@ public class Engine {
 			}else {
 				System.out.println("Error: Incorrect Command");
 			}
-			
-			System.out.println(this.program.toString());
 		};
 	}
 	/**
@@ -67,7 +65,8 @@ public class Engine {
 	 * run
 	 */
 	public void run() {
-		this.program.runProgram(cpu);
+		this.cpu.runCPU();
+		this.program.runProgram(this.cpu);
 	}
 	/**
 	 * newinst
@@ -76,6 +75,7 @@ public class Engine {
 	 */
 	public void newinst(ByteCode instruction) {
 		this.program.setInstruction(instruction);
+		System.out.println(this.program.toString());
 	}
 	/**
 	 * reset

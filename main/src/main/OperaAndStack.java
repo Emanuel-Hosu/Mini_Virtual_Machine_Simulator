@@ -33,10 +33,10 @@ public class OperaAndStack {
 	 */
 	public boolean isEmpty() {
 		//
-		if (this.num_elems < this.Stack.length && this.Stack[num_elems] != -1) {
-			return true;
-		}else {
+		if (this.num_elems < this.Stack.length && this.Stack[num_elems - 1] != -1) {
 			return false;
+		}else {
+			return true;
 		}
 	}
 	/**

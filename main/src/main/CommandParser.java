@@ -4,13 +4,7 @@ public class CommandParser {
 	public static Command parse(String line) {
 		// EXAVTAMENTE LO MISMO QUE BYTECODEPARSER
 		String[] splitedCommand = line.split(" ");
-
-		// PROBAR AVER SI FUNCION AL SPLIT
 		
-		  /*for (int i = 0; i < splitedCommand.length; i++) {
-			  System.out.print(splitedCommand.length + " "); 
-		  }*/
-		 
 		if (splitedCommand.length == 1) {
 			// IGNORA SI ESTA EN MAYUSCULA O NO
 			if ("RUN".equals(splitedCommand[0])) {
@@ -26,6 +20,9 @@ public class CommandParser {
 			// ByteCoder + numero
 			if (splitedCommand[0].equalsIgnoreCase("NEWINST"))
 				return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(splitedCommand[1]));
+			else if (splitedCommand[0].equalsIgnoreCase("REPLACE")) {
+				return new Command(ENUM_COMMAND.REPLACE, ByteCodeParser.parse(splitedCommand[1]));
+			}
 		} else if (splitedCommand.length == 3) {
 			String mixedByteCode = splitedCommand[1] + " " + splitedCommand[2];
 			//system.out.println(mixedByteCode);

@@ -23,16 +23,23 @@ public class Memoria {
 	
 	public String toString() {
 		//Memoria: [0]:0 [3]:4
+		String chain = "";
 		StringBuilder sb = new StringBuilder();
-	    sb.append("Memoria: ");
-	    
-	    for (int i = 0; i < size; i++) {
+	    chain += ("Memory: ");
+	    int i = 0;
+	    for (i = 0; i < Memory.length; i++) {
 	        if (Memory[i] != null) {
-	            sb.append("[").append(i).append("]:").append(Memory[i]).append(" ");
+	            //sb.append("[").append(i).append("]:").append(Memory[i]).append(" ");
+	        	chain += "[" + i + "]:" + Memory[i] + " ";
 	        }
 	    }
 	    
-		return sb.toString();
+	    //Lo MISMO HAY QUE CAMBIAR ALGO AQUI, QUIEN SABE :,) habria que revisar el null_elem ese :,)
+	    if (null_elem) {
+	        chain += "<empty>";
+	    }
+	    
+		return chain;
 		
 	}
 	/**
@@ -46,6 +53,7 @@ public class Memoria {
 			this.resize(posicion);
 			this.Memory[posicion] = valor;
 			
+			null_elem = false;
 			return true;
 		}else {
 			return false;
@@ -53,6 +61,7 @@ public class Memoria {
 	}
 	
 	//retorna el elemento el la posicion pos...
+	//LOAD
 	public Integer read (Integer posicion) {
 		if (Memory[posicion] != null) {
 			return Memory[posicion];	
@@ -80,6 +89,10 @@ public class Memoria {
 			this.Memory = resizeArray;
 		}
 		
+	}
+	
+	public boolean getNullElem() {
+		return null_elem;
 	}
 	
 	public Integer[] getMemory(){

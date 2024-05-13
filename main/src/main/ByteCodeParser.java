@@ -22,20 +22,6 @@ public class ByteCodeParser {
 			}else if("HALT".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.HALT);
 			}
-			/*switch (splitedByte[1]) {
-				case "ADD":
-					return new ByteCode(ENUM_BYTECODE.ADD);
-				case "SUB":
-					return new ByteCode(ENUM_BYTECODE.SUB);
-				case "MUL":
-					return new ByteCode(ENUM_BYTECODE.MUL);
-				case "DIV":
-					return new ByteCode(ENUM_BYTECODE.DIV);
-				case "OUT":
-					return new ByteCode(ENUM_BYTECODE.OUT);
-				case "HALT":
-					return new ByteCode(ENUM_BYTECODE.HALT);
-			}*/
 		}else if(splitedByte.length == 2) {
 			if("PUSH".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(splitedByte[1]));
@@ -44,14 +30,6 @@ public class ByteCodeParser {
 			}else if("STORE".equals(splitedByte[0])) {
 				return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(splitedByte[1]));
 			}
-//			switch (splitedByte[1]) {
-//				case "PUSH":
-//					return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(splitedByte[2]));
-//				case "LOAD":
-//					return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(splitedByte[2]));
-//				case "STORE":
-//					return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(splitedByte[2]));
-//			}
 		}
 		
 		return null;

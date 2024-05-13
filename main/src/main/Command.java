@@ -56,7 +56,6 @@ public class Command {
 			return true;
 		} else if (this.command == ENUM_COMMAND.QUIT) {
 			engine.quit();
-			// user = "quit";
 		} else if (this.command == ENUM_COMMAND.RUN) {
 			engine.run();
 			return true;

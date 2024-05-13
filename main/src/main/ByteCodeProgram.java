@@ -26,7 +26,6 @@ public class ByteCodeProgram {
 		if (position >= 0 && position < size) {
 			this.program[position] = instruction;
 			
-			num_elems++;
 			return true;
 		}else {
 			return false;
@@ -103,8 +102,11 @@ public class ByteCodeProgram {
 		String mensaje = "";
 		for (int i = 0; i < this.num_elems; i++) {
 			if(!cpu.isHalt() && cpu.execute(this.program[i])) {
-				//bla bla bla
-				mensaje += "the state of the machine after executing " + this.program[i].toString() + " is:\nCPU state:\n" + cpu.toString();
+				//HAY QUE ARREGLAR EL .GET PARAM
+				if (this.program[i].getParam() != -1)
+					mensaje += "\nThe state of the machine after executing " + this.program[i].getCode() + " " + this.program[i].getParam() + " is:\n\nCPU state:\n" + cpu.toString() + "\n";
+				else
+					mensaje += "\nThe state of the machine after executing " + this.program[i].getCode() + " is:\n\nCPU state:\n" + cpu.toString() + "\n";
 			}else if(!cpu.isHalt()) { // Si hay error en la ejecucion
 				//bla bla bla
 				mensaje += "Error: Incorrect execution of the command";
@@ -118,7 +120,9 @@ public class ByteCodeProgram {
 	
 	//Crear un metodo void reset();
 	public void reset() {
-		this.program = new ByteCode[0];
+		this.size = 1;
+		this.num_elems = 0;
+		this.program = new ByteCode[size];
 	}
 	
 	//HAY QUE HACER COSAS EN RESIZE Y LUEGO ARREGALR ESTO.

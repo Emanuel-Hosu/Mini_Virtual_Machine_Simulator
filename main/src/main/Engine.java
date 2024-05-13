@@ -36,7 +36,9 @@ public class Engine {
 			if(trn != null) {
 				if(!trn.execute(this)) {
 					//un comando que puede fallar es parar la maquina cuando la maquina ya esta parada, poner como primer comando replace, por que no hay nada a lo que hacerle replace
-					System.out.println("Error: Ejecucion incorrecta del comando");
+					if(!user.equals("QUIT")) {
+						System.out.println("Error: Ejecucion incorrecta del comando");						
+					}
 				}
 			}else {
 				System.out.println("Error: Incorrect Command");
@@ -59,14 +61,16 @@ public class Engine {
 	 */
 	public void quit() {
 		System.out.println("Turning off...");
-		this.end = false;
+		this.end = true;
 	}
 	/**
 	 * run
 	 */
 	public void run() {
 		this.cpu.runCPU();
-		this.program.runProgram(this.cpu);
+		//this.program.runProgram(this.cpu);
+		System.out.println(program.runProgram(this.cpu));
+		System.out.println(this.program.toString());
 	}
 	/**
 	 * newinst
@@ -88,6 +92,10 @@ public class Engine {
 	 * @param replace 
 	 */
 	public void replace(int replace) {
-		
+		System.out.println("New instruction");
+		String newOption = scn.nextLine().toUpperCase();
+		ByteCode trn2 = ByteCodeParser.parse(newOption);
+		this.program.setInstructionPosition(trn2, replace);
+		System.out.println(this.program.toString());
 	}
 }

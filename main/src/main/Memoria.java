@@ -48,7 +48,6 @@ public class Memoria {
 			this.resize(posicion);
 			this.Memory[posicion] = valor;
 			
-			this.null_elem = false;
 			return true;
 		}else {
 			return false;
@@ -73,13 +72,13 @@ public class Memoria {
 	 * @param posicion Integer indica donde quiere guardar el usuario el parametro
 	 */
 	private void resize(Integer posicion) {
-		this.null_elem = false;
 		
 		if (posicion >= this.size) {
+			this.null_elem = false;
 			Integer[] resizeArray = new Integer[posicion * 2];
 			
-			for (int i = 0; i < posicion; i++) {
-				if (i < size) {
+			for (int i = 0; i < this.Memory.length; i++) {
+				if (i < this.size) {
 					resizeArray[i] = this.Memory[i];				
 				}else {
 					resizeArray[i] = null;
@@ -87,6 +86,7 @@ public class Memoria {
 			}
 			
 			this.Memory = resizeArray;
+			this.size = resizeArray.length;
 		}
 		
 	}

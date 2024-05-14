@@ -157,12 +157,9 @@ public class CPU {
 	 *         de lo que he dicho anteriormente es no esta siendo exitosa
 	 */
 	public boolean store(Integer pos) {
-		if (this.pila.isEmpty() == false && this.pila.getNumElems() > 0) {
-			Integer valueCima = this.pila.pop();
-			if (this.stored_memory.write(pos, valueCima))
-				return true;
-			else
-				return false;
+		if (this.pila.isEmpty() == false) {
+			this.stored_memory.write(pos, this.pila.pop());
+			return true;
 		} else {
 			return false;
 		}

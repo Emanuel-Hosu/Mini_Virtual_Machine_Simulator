@@ -17,20 +17,6 @@ public class ByteCodeProgram {
 		this.num_elems = 0;
 		this.program = new ByteCode[size];
 	}
-
-	/**
-	 * add_ByteCode recibe por parametro un ByteCode y se encarga de aniadirlo al
-	 * array de program de su propia clase
-	 * 
-	 * @param instruction recibido por parametro para aniadir el codigo ByteCode al
-	 *                    array
-	 */
-	public void add_ByteCode(ByteCode instruction) {
-		this.program[this.size - 1] = instruction;
-
-		this.num_elems++;
-	};
-
 	/**
 	 * setInstructionPosition metodo boolean que recibe por parametro una instrucion
 	 * y una posicion, inserta el bytecode en la posicion position mientras sema
@@ -46,7 +32,7 @@ public class ByteCodeProgram {
 	 */
 	public boolean setInstructionPosition(ByteCode instruction, int position) {
 		ByteCodeResize();
-		if (position >= 0 && position < size) {
+		if (position >= 0 && position < this.size) {
 			this.program[position] = instruction;
 
 			return true;
@@ -64,7 +50,7 @@ public class ByteCodeProgram {
 	 */
 	public void setInstruction(ByteCode instruction) {
 		ByteCodeResize();
-		this.program[(this.num_elems + 1) - 1] = instruction;
+		this.program[this.num_elems] = instruction;
 
 		this.num_elems++;
 	}

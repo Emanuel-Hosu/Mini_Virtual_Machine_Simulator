@@ -71,6 +71,7 @@ public class Engine {
 	 */
 	public void quit() {
 		System.out.println("Turning off...");
+		System.out.println(this.program.toString());
 		this.end = true;
 	}
 

@@ -1,10 +1,24 @@
 package main;
 
+/**
+ * @author Emi
+ */
 public class CommandParser {
+	/**
+	 * parse metodo de tipo Command estatico, encargado de recibir por parametro lo
+	 * que ha introducido el usuario por pantalla y se encarga de parsearlo. Una vez
+	 * parseado si las partes del string parseado concuerda con algun commando
+	 * devuelve el commando
+	 * 
+	 * @param line String que viene de la clase Engine, con el string de commandos
+	 *             que ha introducido el usuario
+	 * @return dependiendo del comando correcto que ha introducido el usuario un
+	 *         ENUM_COMMAND con el comando introducido por el usaurio o si ninguno
+	 *         es correcto devuelve un null
+	 */
 	public static Command parse(String line) {
-		// EXAVTAMENTE LO MISMO QUE BYTECODEPARSER
 		String[] splitedCommand = line.split(" ");
-		
+
 		if (splitedCommand.length == 1) {
 			// IGNORA SI ESTA EN MAYUSCULA O NO
 			if ("RUN".equals(splitedCommand[0])) {
@@ -17,7 +31,6 @@ public class CommandParser {
 				return new Command(ENUM_COMMAND.RESET);
 			}
 		} else if (splitedCommand.length == 2) {
-			// ByteCoder + numero
 			if (splitedCommand[0].equalsIgnoreCase("NEWINST"))
 				return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(splitedCommand[1]));
 			else if (splitedCommand[0].equalsIgnoreCase("REPLACE")) {
@@ -25,9 +38,8 @@ public class CommandParser {
 			}
 		} else if (splitedCommand.length == 3) {
 			String mixedByteCode = splitedCommand[1] + " " + splitedCommand[2];
-			//system.out.println(mixedByteCode);
-			if(splitedCommand[0].equalsIgnoreCase("NEWINST"))
-                return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(mixedByteCode));
+			if (splitedCommand[0].equalsIgnoreCase("NEWINST"))
+				return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(mixedByteCode));
 		}
 		return null;
 	}
